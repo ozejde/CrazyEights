@@ -1,0 +1,203 @@
+Welcome to CrazyEights.  Enter commands.  Type 'exit' to end.
+start-game 4 testDeck false
+Cards dealt.
+Player 1, your turn. 
+Your cards are QH 8S 10D 3D 2S 5C AS 
+The top discard is 2D
+play-card 3D
+Card 3D played.
+Player 2, your turn. 
+Your cards are 7H 4C 4S AD 3C 7S KH 
+The top discard is 3D
+play-card 3C
+Card 3C played.
+Player 3, your turn. 
+Your cards are JC JD 5H KC 6S 6D 10H 
+The top discard is 3C
+play-card KC
+Card KC played.
+Player 4, your turn. 
+Your cards are 9D AH QC KD QD 3S 6C 
+The top discard is KC
+play-card QC
+Card QC played.
+Player 1, your turn. 
+Your cards are QH 8S 10D 2S 5C AS 
+The top discard is QC
+pay-card 5C
+Unknown command pay-card
+Player 1, your turn. 
+Your cards are QH 8S 10D 2S 5C AS 
+The top discard is QC
+play-card 5C
+Card 5C played.
+Player 2, your turn. 
+Your cards are 7H 4C 4S AD 7S KH 
+The top discard is 5C
+play-card 4C
+Card 4C played.
+Player 3, your turn. 
+Your cards are JC JD 5H 6S 6D 10H 
+The top discard is 4C
+draw-card
+Card QS was drawn.
+Player 3, your turn. 
+Your cards are JC JD 5H 6S 6D 10H QS 
+The top discard is 4C
+play-card JC
+Card JC played.
+Player 4, your turn. 
+Your cards are 9D AH KD QD 3S 6C 
+The top discard is JC
+play-card 6C
+Card 6C played.
+Player 1, your turn. 
+Your cards are QH 8S 10D 2S AS 
+The top discard is 6C
+draw-card
+Card 8C was drawn.
+Player 1, your turn. 
+Your cards are QH 8S 10D 2S AS 8C 
+The top discard is 6C
+play-card 8C
+Card 8C played.
+Player 2, your turn. 
+Your cards are 7H 4S AD 7S KH 
+The top discard is 8C
+draw-card
+Card 8D was drawn.
+Player 2, your turn. 
+Your cards are 7H 4S AD 7S KH 8D 
+The top discard is 8C
+play-card 8D
+Card 8D played.
+Player 3, your turn. 
+Your cards are JD 5H 6S 6D 10H QS 
+The top discard is 8D
+play-card 6D
+Card 6D played.
+Player 4, your turn. 
+Your cards are 9D AH KD QD 3S 
+The top discard is 6D
+play-card KD
+Card KD played.
+Player 1, your turn. 
+Your cards are QH 8S 10D 2S AS 
+The top discard is KD
+play-card 10D
+Card 10D played.
+Player 2, your turn. 
+Your cards are 7H 4S AD 7S KH 
+The top discard is 10D
+play-card AD
+Card AD played.
+Player 3, your turn. 
+Your cards are JD 5H 6S 10H QS 
+The top discard is AD
+play-card JD
+Card JD played.
+Player 4, your turn. 
+Your cards are 9D AH QD 3S 
+The top discard is JD
+play-card QD
+Card QD played.
+Player 1, your turn. 
+Your cards are QH 8S 2S AS 
+The top discard is QD
+play-card QH
+Card QH played.
+Player 2, your turn. 
+Your cards are 7H 4S 7S KH 
+The top discard is QH
+play-card KH
+Card KH played.
+Player 3, your turn. 
+Your cards are 5H 6S 10H QS 
+The top discard is KH
+play-card 10H
+Card 10H played.
+Player 4, your turn. 
+Your cards are 9D AH 3S 
+The top discard is 10H
+play-card AH
+Card AH played.
+Player 1, your turn. 
+Your cards are 8S 2S AS 
+The top discard is AH
+play-card AS
+Card AS played.
+Player 2, your turn. 
+Your cards are 7H 4S 7S 
+The top discard is AS
+play-card 4S
+Card 4S played.
+Player 3, your turn. 
+Your cards are 5H 6S QS 
+The top discard is 4S
+play-card 6S
+Card 6S played.
+Player 4, your turn. 
+Your cards are 9D 3S 
+The top discard is 6S
+play-card 3S
+Card 3S played.
+Player 1, your turn. 
+Your cards are 8S 2S 
+The top discard is 3S
+play-card 2S
+Card 2S played.
+Player 2, your turn. 
+Your cards are 7H 7S 
+The top discard is 2S
+play-card 7S
+Card 7S played.
+Player 3, your turn. 
+Your cards are 5H QS 
+The top discard is 7S
+play-card QS
+Card QS played.
+Player 4, your turn. 
+Your cards are 9D 
+The top discard is QS
+draw-card
+Card 2C was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 
+The top discard is QS
+draw-card
+Card 9H was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 9H 
+The top discard is QS
+draw-card
+Card 6H was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 9H 6H 
+The top discard is QS
+draw-card
+Card 4H was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 9H 6H 4H 
+The top discard is QS
+draw-card
+Card 2H was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 9H 6H 4H 2H 
+The top discard is QS
+draw-card
+Card 7D was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 9H 6H 4H 2H 7D 
+The top discard is QS
+draw-card
+Card 8H was drawn.
+Player 4, your turn. 
+Your cards are 9D 2C 9H 6H 4H 2H 7D 8H 
+The top discard is QS
+play-card 8H
+Card 8H played.
+Player 1, your turn. 
+Your cards are 8S 
+The top discard is 8H
+play-card 8S
+Player 1 wins!
