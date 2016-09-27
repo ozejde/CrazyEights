@@ -1,10 +1,11 @@
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class CrazyEights {
+	
+	private DrawDeck drawDeck;
+	private ArrayList<Player> players;
 
 	/**
 	 * Initialize your fields here (then change this documentation).
@@ -61,8 +62,14 @@ public class CrazyEights {
 	 * Handles starting a game for the specified number of players with the specified deck.
 	 */
 	private String handleStartGame(int numPlayers, String deckName, boolean shuffle) {
-		//TODO: Implement this
-		return null;
+		if(deckName!=null){
+			this.drawDeck = new DrawDeck(deckName, shuffle);
+		} else {
+			this.drawDeck = new DrawDeck(shuffle);
+		}
+		
+		
+		return "Cards dealt.";
 	}
 	
 	
