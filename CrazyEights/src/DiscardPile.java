@@ -15,6 +15,6 @@ public class DiscardPile {
 	}
 	
 	public void addCard(String card){
-		this.discardPile.add(card);
+		this.discardPile.add(0,card);
 			}
 }

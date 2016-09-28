@@ -18,8 +18,6 @@ public class Player {
 		return result;
 	}
 	
-	
-	
 	public String drawCard(){
 		String card = this.drawDeck.drawCard();
 		this.cardsInHand.add(card);
@@ -29,7 +27,6 @@ public class Player {
 	public ArrayList<String> getCards(){
 		return this.cardsInHand;
 	}
-	public void discard(){
-		//this.cardsInHand.g
-	}
+	
+	
 }

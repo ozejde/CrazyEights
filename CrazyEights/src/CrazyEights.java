@@ -97,33 +97,29 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handlePlayCard(String cardValue) {
-		
+		String topNumber = this.discardPile.getTopCard().substring(0, 1);
+		String topSuit = this.discardPile.getTopCard().substring(1, 2);
 		String cardValueNumber = cardValue.substring(0, 1);
 		String cardValueSuit = cardValue.substring(1, 2);
-		String cardPlayed = " ";
-		
-		if(cardValue.length()!=2){
-			currentPlayerNumber++;
+
+		if (!(this.players.get(this.currentPlayerNumber - 1).getCards().contains(cardValue))) {
 			return "Card was not valid for play. Please try again. " + this.statusUpdate();
 		}
-		
-		for (String card : this.players.get(this.currentPlayerNumber - 1).getCards()) {
-			String cardNumber = card.substring(0, 1);
-			String cardSuit = card.substring(1, 2);
-			
-			if (cardValueNumber.equals(cardNumber) || cardValueSuit.equals(cardSuit)) {
-				this.discardPile.addCard(card);
-				this.players.get(this.currentPlayerNumber - 1).getCards().remove(card);
-				cardPlayed = card;
-			} else if (card.substring(0, 1).equals("8")) {
-				this.discardPile.addCard(card);
-				this.players.get(this.currentPlayerNumber - 1).getCards().remove(card);
-				cardPlayed = card;
-			}
+
+		if (cardValueNumber.equals(topNumber) || cardValueSuit.equals(topSuit)) {
+			this.discardPile.addCard(cardValue);
+			this.players.get(this.currentPlayerNumber - 1).getCards().remove(cardValue);
+		} else if (cardValueNumber.equals("8")) {
+			this.discardPile.addCard(cardValue);
+			this.players.get(this.currentPlayerNumber - 1).getCards().remove(cardValue);
 		}
 
-		currentPlayerNumber++;
-		return cardPlayed;
+		if (this.currentPlayerNumber == this.totalPlayers){
+			this.currentPlayerNumber = 1;
+		}else{
+			this.currentPlayerNumber++;
+		}
+		return cardValue + this.statusUpdate();
 	}
 
 	/**
