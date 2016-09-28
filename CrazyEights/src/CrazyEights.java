@@ -98,16 +98,23 @@ public class CrazyEights {
 	 */
 		private String handlePlayCard(String cardValue){
 			int i=0;
+			String cardPlayed = " ";
 			for(String card: this.players.get(this.currentPlayerNumber-1).getCards()){
+				
 				if(card.substring(0,1).equals(cardValue.substring(0,1)) || card.substring(1,2).equals(cardValue.substring(1,2))){
 					this.discardPile.getcurrentPile().add(cardValue);
 					this.players.get(this.currentPlayerNumber-1).getCards().remove(i);
+					cardPlayed = card;
+				}else if(card.substring(0,1).equals("8")){
+					this.discardPile.getcurrentPile().add(cardValue);
+					this.players.get(this.currentPlayerNumber-1).getCards().remove(i);
+					cardPlayed = card;
 				}
 				i=i+1;
 			}
 				
 		
-		return null;
+		return cardPlayed;
 	}
 
 	/**
