@@ -14,7 +14,7 @@ public class DiscardPile {
 		return this.discardPile.get(0);
 	}
 	
-	public ArrayList<String> getcurrentPile(){
-		return this.discardPile;
-	}
+	public void addCard(String card){
+		this.discardPile.add(card);
+			}
 }

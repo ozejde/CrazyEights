@@ -66,7 +66,7 @@ public class CrazyEights {
 	 */
 	private String handleStartGame(int numPlayers, String deckName, boolean shuffle) {
 		this.totalPlayers = numPlayers;
-		
+
 		if (deckName != null) {
 			this.drawDeck = new DrawDeck(deckName, shuffle);
 		} else {
@@ -96,24 +96,33 @@ public class CrazyEights {
 	 * @return The string message to display to the user before the game state
 	 *         text.
 	 */
-		private String handlePlayCard(String cardValue){
-			int i=0;
-			String cardPlayed = " ";
-			for(String card: this.players.get(this.currentPlayerNumber-1).getCards()){
-				
-				if(card.substring(0,1).equals(cardValue.substring(0,1)) || card.substring(1,2).equals(cardValue.substring(1,2))){
-					this.discardPile.getcurrentPile().add(cardValue);
-					this.players.get(this.currentPlayerNumber-1).getCards().remove(i);
-					cardPlayed = card;
-				}else if(card.substring(0,1).equals("8")){
-					this.discardPile.getcurrentPile().add(cardValue);
-					this.players.get(this.currentPlayerNumber-1).getCards().remove(i);
-					cardPlayed = card;
-				}
-				i=i+1;
-			}
-				
+	private String handlePlayCard(String cardValue) {
 		
+		String cardValueNumber = cardValue.substring(0, 1);
+		String cardValueSuit = cardValue.substring(1, 2);
+		String cardPlayed = " ";
+		
+		if(cardValue.length()!=2){
+			currentPlayerNumber++;
+			return "Card was not valid for play. Please try again. " + this.statusUpdate();
+		}
+		
+		for (String card : this.players.get(this.currentPlayerNumber - 1).getCards()) {
+			String cardNumber = card.substring(0, 1);
+			String cardSuit = card.substring(1, 2);
+			
+			if (cardValueNumber.equals(cardNumber) || cardValueSuit.equals(cardSuit)) {
+				this.discardPile.addCard(card);
+				this.players.get(this.currentPlayerNumber - 1).getCards().remove(card);
+				cardPlayed = card;
+			} else if (card.substring(0, 1).equals("8")) {
+				this.discardPile.addCard(card);
+				this.players.get(this.currentPlayerNumber - 1).getCards().remove(card);
+				cardPlayed = card;
+			}
+		}
+
+		currentPlayerNumber++;
 		return cardPlayed;
 	}
 
@@ -124,7 +133,7 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handleDrawCard() {
-		String card = this.players.get(this.currentPlayerNumber-1).drawCard();
+		String card = this.players.get(this.currentPlayerNumber - 1).drawCard();
 		return card;
 	}
 
