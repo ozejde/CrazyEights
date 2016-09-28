@@ -97,8 +97,17 @@ public class CrazyEights {
 	 *         text.
 	 */
 		private String handlePlayCard(String cardValue){
-			
-			
+			int i=0;
+			DiscardPile pile = new DiscardPile(this.drawDeck);
+			for(String card: this.players.get(this.currentPlayerNumber-1).getCards()){
+				if(card.substring(0,1).equals(cardValue.substring(0,1)) || card.substring(1,2).equals(cardValue.substring(1,2))){
+					pile.getcurrentPile().add(cardValue);
+					this.players.get(this.currentPlayerNumber-1).getCards().remove(i);
+				}
+				i=i+1;
+			}
+				
+		
 		return null;
 	}
 
