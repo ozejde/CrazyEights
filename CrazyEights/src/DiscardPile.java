@@ -13,4 +13,8 @@ public class DiscardPile {
 	public String getTopCard(){
 		return this.discardPile.get(0);
 	}
+	
+	public ArrayList<String> getcurrentPile(){
+		return this.discardPile;
+	}
 }
