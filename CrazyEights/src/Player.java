@@ -21,8 +21,9 @@ public class Player {
 	
 	
 	public String drawCard(){
-
-		this.cardsInHand.add(drawDeck.drawCard());
+		String card = this.drawDeck.drawCard();
+		this.cardsInHand.add(card);
+		return card;
 	}
 
 }
