@@ -109,9 +109,8 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handleDrawCard() {
-		
-		players.get(currentPlayerNumber-1).drawCard();
-		return null;
+		String card = this.players.get(this.currentPlayerNumber-1).drawCard();
+		return card;
 	}
 
 	private String statusUpdate() {
