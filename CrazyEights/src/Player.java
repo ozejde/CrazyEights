@@ -25,5 +25,11 @@ public class Player {
 		this.cardsInHand.add(card);
 		return card;
 	}
-
+	
+	public ArrayList<String> getCards(){
+		return this.cardsInHand;
+	}
+	public void discard(){
+		//this.cardsInHand.g
+	}
 }
