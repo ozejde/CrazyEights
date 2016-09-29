@@ -27,7 +27,7 @@ public class SelfTests {
 				"The top discard is KC"
 		};
 		game.handleCommand("start-game 2 testDeck false");
-		String[] result = game.handleCommand("play-card AAA").split("\n");
+		String[] result = game.handleCommand("play-card AAAAA").split("\n");
 		compareStringArrayResults(expected, result);
 	}
 	

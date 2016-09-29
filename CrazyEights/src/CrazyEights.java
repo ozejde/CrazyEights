@@ -110,10 +110,11 @@ public class CrazyEights {
 		
 
 		if (this.players.get(this.currentPlayerNumber - 1).getCards().contains(cardValue)) {
-			String topNumber = this.discardPile.getTopCard().substring(0, 1);
-			String topSuit = this.discardPile.getTopCard().substring(1, 2);
-			String cardValueNumber = cardValue.substring(0, 1);
-			String cardValueSuit = cardValue.substring(1, 2);
+			String topCard = this.discardPile.getTopCard();
+			String topNumber = topCard.substring(0, topCard.length()-1);
+			String topSuit =topCard.substring(topCard.length()-1, topCard.length());
+			String cardValueNumber = cardValue.substring(0, cardValue.length()-1);
+			String cardValueSuit = cardValue.substring(cardValue.length()-1, cardValue.length());
 			
 		if (cardValueNumber.equals(topNumber) || cardValueSuit.equals(topSuit)|| (cardValueNumber.equals("8"))) {
 			this.discardPile.addCard(cardValue);
