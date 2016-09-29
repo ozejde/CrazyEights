@@ -12,7 +12,7 @@ public class DrawDeck {
 		}
 
 		if (shuffle) {
-			Collections.shuffle(this.deck);
+			this.shuffle();
 		}
 	}
 
@@ -31,16 +31,28 @@ public class DrawDeck {
 		}
 
 		if (shuffle) {
-			Collections.shuffle(this.deck);
+			this.shuffle();
 		}
 	}
 
+	public void shuffle(){
+		Collections.shuffle(this.deck);
+	}
+	
+	public int size(){
+		return this.deck.size();
+	}
+	
 	public String drawCard() {
-		
 			String card = this.deck.get(0);
 			this.deck.remove(0);
 			return card;
-
-		
+	}
+	
+	public void addDeck(ArrayList<String> discardPile){
+		for (String card : discardPile) {
+			this.deck.add(card);
+		}
+		this.shuffle();
 	}
 }

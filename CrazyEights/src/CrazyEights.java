@@ -13,8 +13,7 @@ public class CrazyEights {
 	 * Initialize your fields here (then change this documentation).
 	 */
 	public CrazyEights() {
-		this.currentPlayerNumber = 0;
-		this.players = new ArrayList<>();
+		
 
 	}
 
@@ -66,12 +65,17 @@ public class CrazyEights {
 	 */
 	private String handleStartGame(int numPlayers, String deckName, boolean shuffle) {
 		this.totalPlayers = numPlayers;
+		this.currentPlayerNumber = 0;
+		this.players = new ArrayList<>();
 
 		if(numPlayers<2||numPlayers>4){
 			return "Incorrect number of players, must be between 2 and 4.";
 		}
 		
 		if (deckName != null) {
+			if(!(deckName.equals("standardDeck"))&&!(deckName.equals("testDeck"))){
+				return "Incorrect deck.\nPlease start game again.";
+			}
 			this.drawDeck = new DrawDeck(deckName, shuffle);
 		} else {
 			this.drawDeck = new DrawDeck(shuffle);
@@ -101,7 +105,9 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handlePlayCard(String cardValue) {
+		
 	
+		
 
 		if (this.players.get(this.currentPlayerNumber - 1).getCards().contains(cardValue)) {
 			String topNumber = this.discardPile.getTopCard().substring(0, 1);
@@ -138,6 +144,14 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handleDrawCard() {
+
+		if(this.drawDeck.size()==0){
+			String topCard = this.discardPile.getTopCard();
+			this.discardPile.removeCard(0);
+			this.drawDeck.addDeck(this.discardPile.getPile());
+			this.discardPile.restartDeck(topCard);
+		}
+		
 		String card = this.players.get(this.currentPlayerNumber - 1).drawCard();
 		return "Card "+card+ " was drawn."+this.statusUpdate();
 	}
