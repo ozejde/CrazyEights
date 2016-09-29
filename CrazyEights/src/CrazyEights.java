@@ -145,7 +145,7 @@ public class CrazyEights {
 	 */
 	private String handleDrawCard() {
 
-		if(this.drawDeck.size()==0){
+		if(this.drawDeck.size()==1){
 			String topCard = this.discardPile.getTopCard();
 			this.discardPile.removeCard(0);
 			this.drawDeck.addDeck(this.discardPile.getPile());
