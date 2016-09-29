@@ -67,6 +67,10 @@ public class CrazyEights {
 	private String handleStartGame(int numPlayers, String deckName, boolean shuffle) {
 		this.totalPlayers = numPlayers;
 
+		if(numPlayers<2||numPlayers>4){
+			return "Incorrect number of players, must be between 2 and 4.";
+		}
+		
 		if (deckName != null) {
 			this.drawDeck = new DrawDeck(deckName, shuffle);
 		} else {
@@ -97,29 +101,34 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handlePlayCard(String cardValue) {
-		String topNumber = this.discardPile.getTopCard().substring(0, 1);
-		String topSuit = this.discardPile.getTopCard().substring(1, 2);
-		String cardValueNumber = cardValue.substring(0, 1);
-		String cardValueSuit = cardValue.substring(1, 2);
+	
 
-		if (!(this.players.get(this.currentPlayerNumber - 1).getCards().contains(cardValue))) {
-			return "Card was not valid for play. Please try again. " + this.statusUpdate();
-		}
-
-		if (cardValueNumber.equals(topNumber) || cardValueSuit.equals(topSuit)) {
+		if (this.players.get(this.currentPlayerNumber - 1).getCards().contains(cardValue)) {
+			String topNumber = this.discardPile.getTopCard().substring(0, 1);
+			String topSuit = this.discardPile.getTopCard().substring(1, 2);
+			String cardValueNumber = cardValue.substring(0, 1);
+			String cardValueSuit = cardValue.substring(1, 2);
+			
+		if (cardValueNumber.equals(topNumber) || cardValueSuit.equals(topSuit)|| (cardValueNumber.equals("8"))) {
 			this.discardPile.addCard(cardValue);
 			this.players.get(this.currentPlayerNumber - 1).getCards().remove(cardValue);
-		} else if (cardValueNumber.equals("8")) {
-			this.discardPile.addCard(cardValue);
-			this.players.get(this.currentPlayerNumber - 1).getCards().remove(cardValue);
+		
+			if(this.players.get(currentPlayerNumber-1).getCards().size()==0){
+				return "Player "+ currentPlayerNumber+ " wins!";
+			}
+			
+			if (this.currentPlayerNumber == this.totalPlayers){
+				this.currentPlayerNumber = 1;
+			}else{
+				this.currentPlayerNumber++;
+			}
+			
+			
+			return "Card "+cardValue+" played." + this.statusUpdate();
+		} 
 		}
-
-		if (this.currentPlayerNumber == this.totalPlayers){
-			this.currentPlayerNumber = 1;
-		}else{
-			this.currentPlayerNumber++;
-		}
-		return cardValue + this.statusUpdate();
+		return "Card was not valid for play. Please try again. " + this.statusUpdate();
+	
 	}
 
 	/**
@@ -130,7 +139,7 @@ public class CrazyEights {
 	 */
 	private String handleDrawCard() {
 		String card = this.players.get(this.currentPlayerNumber - 1).drawCard();
-		return card;
+		return "Card "+card+ " was drawn."+this.statusUpdate();
 	}
 
 	private String statusUpdate() {

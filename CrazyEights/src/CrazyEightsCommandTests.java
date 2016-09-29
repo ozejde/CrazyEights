@@ -208,7 +208,7 @@ public class CrazyEightsCommandTests {
 			ArrayList<String> currentList = null;
 			exampleGame.nextLine(); //remove the welcome line
 			while (exampleGame.hasNextLine()) {
-				String line = exampleGame.nextLine().trim();;
+				String line = exampleGame.nextLine().trim();
 				if (line.startsWith("start-game") || line.startsWith("play-card") || line.startsWith("pay-card") || line.startsWith("draw-card") || line.startsWith("exit")) {
 					if (currentList!=null) {
 						responses.add(currentList);
