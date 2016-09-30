@@ -9,11 +9,12 @@ public class CrazyEights {
 	private int currentPlayerNumber;
 	private int totalPlayers;
 
-	/**
-	 * Initialize your fields here (then change this documentation).
-	 */
 	public CrazyEights() {
-		
+		this.drawDeck = new DrawDeck();
+		this.discardPile =new  DiscardPile();
+		this.players = new ArrayList<>();
+		this.currentPlayerNumber = 0;
+		this.totalPlayers = 0;
 
 	}
 
@@ -53,7 +54,7 @@ public class CrazyEights {
 			input.close();
 			System.exit(0);
 		} else {
-			toReturn = "Unknown command " + commandType;
+			toReturn = "Unknown command " + commandType + this.statusUpdate();
 		}
 		input.close();
 		return toReturn;
@@ -68,12 +69,12 @@ public class CrazyEights {
 		this.currentPlayerNumber = 0;
 		this.players = new ArrayList<>();
 
-		if(numPlayers<2||numPlayers>4){
+		if (numPlayers < 2 || numPlayers > 4) {
 			return "Incorrect number of players, must be between 2 and 4.";
 		}
-		
+
 		if (deckName != null) {
-			if(!(deckName.equals("standardDeck"))&&!(deckName.equals("testDeck"))){
+			if (!(deckName.equals("standardDeck")) && !(deckName.equals("testDeck"))) {
 				return "Incorrect deck.\nPlease start game again.";
 			}
 			this.drawDeck = new DrawDeck(deckName, shuffle);
@@ -105,37 +106,33 @@ public class CrazyEights {
 	 *         text.
 	 */
 	private String handlePlayCard(String cardValue) {
-		
-	
-		
 
 		if (this.players.get(this.currentPlayerNumber - 1).getCards().contains(cardValue)) {
 			String topCard = this.discardPile.getTopCard();
-			String topNumber = topCard.substring(0, topCard.length()-1);
-			String topSuit =topCard.substring(topCard.length()-1, topCard.length());
-			String cardValueNumber = cardValue.substring(0, cardValue.length()-1);
-			String cardValueSuit = cardValue.substring(cardValue.length()-1, cardValue.length());
-			
-		if (cardValueNumber.equals(topNumber) || cardValueSuit.equals(topSuit)|| (cardValueNumber.equals("8"))) {
-			this.discardPile.addCard(cardValue);
-			this.players.get(this.currentPlayerNumber - 1).getCards().remove(cardValue);
-		
-			if(this.players.get(currentPlayerNumber-1).getCards().size()==0){
-				return "Player "+ currentPlayerNumber+ " wins!";
+			String topNumber = topCard.substring(0, topCard.length() - 1);
+			String topSuit = topCard.substring(topCard.length() - 1, topCard.length());
+			String cardValueNumber = cardValue.substring(0, cardValue.length() - 1);
+			String cardValueSuit = cardValue.substring(cardValue.length() - 1, cardValue.length());
+
+			if (cardValueNumber.equals(topNumber) || cardValueSuit.equals(topSuit) || (cardValueNumber.equals("8"))) {
+				this.discardPile.addCard(cardValue);
+				this.players.get(this.currentPlayerNumber - 1).getCards().remove(cardValue);
+
+				if (this.players.get(currentPlayerNumber - 1).getCards().size() == 0) {
+					return "Player " + currentPlayerNumber + " wins!";
+				}
+
+				if (this.currentPlayerNumber == this.totalPlayers) {
+					this.currentPlayerNumber = 1;
+				} else {
+					this.currentPlayerNumber++;
+				}
+
+				return "Card " + cardValue + " played." + this.statusUpdate();
 			}
-			
-			if (this.currentPlayerNumber == this.totalPlayers){
-				this.currentPlayerNumber = 1;
-			}else{
-				this.currentPlayerNumber++;
-			}
-			
-			
-			return "Card "+cardValue+" played." + this.statusUpdate();
-		} 
 		}
 		return "Card was not valid for play. Please try again. " + this.statusUpdate();
-	
+
 	}
 
 	/**
@@ -146,17 +143,25 @@ public class CrazyEights {
 	 */
 	private String handleDrawCard() {
 
-		if(this.drawDeck.size()==1){
+		if (this.drawDeck.size() == 1) {
 			String topCard = this.discardPile.getTopCard();
 			this.discardPile.removeCard(0);
 			this.drawDeck.addDeck(this.discardPile.getPile());
 			this.discardPile.restartDeck(topCard);
 		}
-		
+
 		String card = this.players.get(this.currentPlayerNumber - 1).drawCard();
-		return "Card "+card+ " was drawn."+this.statusUpdate();
+		return "Card " + card + " was drawn." + this.statusUpdate();
 	}
 
+	/**
+	 * 
+	 * Displays the current game information
+	 *
+	 * @return The string message of the current player, the cards in their
+	 *         hand, and the top card in the discard pile
+	 * 
+	 */
 	private String statusUpdate() {
 		String line1 = "Player " + this.currentPlayerNumber + ", your turn.";
 		String line2 = "Your cards are" + this.players.get(this.currentPlayerNumber - 1).getHand();

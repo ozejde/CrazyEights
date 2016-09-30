@@ -193,12 +193,17 @@ public class CrazyEightsCommandTests {
 	
 	@Test 
 	public void testFullGames() {
+		exit.expectSystemExitWithStatus(-300); 
+		// detects if you exit earily.  DO NOT exit with status -300.
+		
 		testGame("game1.txt");
 		testGame("game2.txt");
 		testGame("game3.txt");
+		exit.expectSystemExitWithStatus(0); 
+		game.handleCommand("exit");
 	}
 	private void testGame(String name) {
-		exit.expectSystemExitWithStatus(0);
+		//exit.expectSystemExitWithStatus(0);
 		ArrayList<String> commands = new ArrayList<String>();
 		ArrayList<ArrayList<String>> responses = new ArrayList<ArrayList<String>>();
 		Scanner exampleGame;
@@ -208,7 +213,7 @@ public class CrazyEightsCommandTests {
 			ArrayList<String> currentList = null;
 			exampleGame.nextLine(); //remove the welcome line
 			while (exampleGame.hasNextLine()) {
-				String line = exampleGame.nextLine().trim();
+				String line = exampleGame.nextLine().trim();;
 				if (line.startsWith("start-game") || line.startsWith("play-card") || line.startsWith("pay-card") || line.startsWith("draw-card") || line.startsWith("exit")) {
 					if (currentList!=null) {
 						responses.add(currentList);

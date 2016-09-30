@@ -5,6 +5,14 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
+/**
+ * 
+ * Includes 3 JUnit tests for previous bugs in code
+ *
+ * @author ejdeoz, murrayjd
+ *         
+ */
+
 public class SelfTests {
 	
 	@Rule
